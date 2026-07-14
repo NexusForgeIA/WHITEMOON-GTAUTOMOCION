@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GT Automoción — Taller mecánico de confianza · Cita online</title>
+<meta name="description" content="GT Automoción, el taller de Ángel Gaitán. Mantenimiento, mecánica y electromecánica, diagnosis Mercedes, comprobación de coches antes de comprar y peritajes. Reserva tu cita online en segundos." />
+<meta name="theme-color" content="#0a0a0d" />
+<link rel="canonical" href="https://gtautomocion.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="GT Automoción — Taller mecánico de confianza" />
+<meta property="og:description" content="Mantenimiento, diagnosis, comprobación pre-compra y peritajes. Reserva tu cita online en segundos." />
+<meta property="og:image" content="https://gtautomocion.com/cdn/shop/files/back2.png?width=1200" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://gtautomocion.com/" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" /></noscript>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"AutoRepair",
+  "name":"GT Automoción","url":"https://gtautomocion.com/","priceRange":"€€","areaServed":"España",
+  "image":"https://gtautomocion.com/cdn/shop/files/logo-gt.png",
+  "makesOffer":[
+    {"@type":"Offer","name":"Cita de mantenimiento (motor y caja de cambios)","price":"200.00","priceCurrency":"EUR"},
+    {"@type":"Offer","name":"Diagnosis y actualización Mercedes","price":"287.50","priceCurrency":"EUR"},
+    {"@type":"Offer","name":"Comprobación pre-compra GT","price":"250.47","priceCurrency":"EUR"},
+    {"@type":"Offer","name":"Mecánica y electromecánica","price":"50.00","priceCurrency":"EUR"},
+    {"@type":"Offer","name":"Estudio de viabilidad para informes periciales","price":"120.00","priceCurrency":"EUR"},
+    {"@type":"Offer","name":"Asesoramiento telefónico","price":"103.53","priceCurrency":"EUR"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"¿Cómo reservo una cita en GT Automoción?","acceptedAnswer":{"@type":"Answer","text":"Habla con Diego, nuestro asistente. Eliges el servicio, dejas tu nombre y teléfono y el taller te llama para confirmar la cita."}},
+    {"@type":"Question","name":"¿Comprobáis coches antes de comprarlos?","acceptedAnswer":{"@type":"Answer","text":"Sí. La Cita Comprobación GT revisa el vehículo antes de la compra, con nota informativa, fotos y opción de asesoramiento."}},
+    {"@type":"Question","name":"¿Trabajáis con Mercedes?","acceptedAnswer":{"@type":"Answer","text":"Sí, ofrecemos diagnosis y actualización específica para Mercedes con equipo especializado."}},
+    {"@type":"Question","name":"¿Puedo pedir un peritaje o informe pericial?","acceptedAnswer":{"@type":"Answer","text":"Sí. Realizamos asesoramiento y estudio de viabilidad para informes periciales, presencial u online."}},
+    {"@type":"Question","name":"¿Ofrecéis asesoramiento a distancia?","acceptedAnswer":{"@type":"Answer","text":"Sí, disponemos de asesoramiento telefónico donde nos envías tu situación y documentación."}}
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#0a0a0d;
+  --bg2:#0f0f13;
+  --card:#15151b;
+  --p:#e11d2a;
+  --p2:#ff3b48;
+  --text:#e9eaef;
+  --muted:#868c9b;
+  --border:rgba(225,29,42,.24);
+  --line:rgba(255,255,255,.06);
+  --g:#00d4aa;
+  --display:"Barlow Condensed",system-ui,sans-serif;
+  --body:"Inter",system-ui,sans-serif;
+  --maxw:1240px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--p);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+picture{display:contents}
+h1,h2,h3,.display{font-family:var(--display);font-weight:800;line-height:.95;letter-spacing:-.01em;text-transform:uppercase}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+.eyebrow{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.28em;font-size:.78rem;color:var(--p2);display:inline-flex;align-items:center;gap:.7em}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--p);display:inline-block;opacity:.7}
+/* NAV */
+header.nav{position:fixed;top:0;left:0;right:0;z-index:900;transition:background .4s,border-color .4s,backdrop-filter .4s}
+header.nav::after{content:"";position:absolute;inset:0;border-bottom:1px solid transparent;transition:border-color .4s;pointer-events:none}
+header.nav.scrolled{background:rgba(8,8,11,.82);backdrop-filter:blur(14px)}
+header.nav.scrolled::after{border-bottom-color:var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:84px}
+.nav-logo{display:flex;align-items:center;gap:13px}
+.nav-logo .mark{width:44px;height:44px;border-radius:9px;background:linear-gradient(135deg,var(--p),#8f0d16);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:1.35rem;color:#fff;box-shadow:0 8px 22px -8px rgba(225,29,42,.7)}
+.nav-logo .sep{width:1px;height:26px;background:var(--line)}
+.nav-logo small{font-family:var(--display);font-weight:600;letter-spacing:.18em;font-size:.62rem;color:var(--muted);text-transform:uppercase;line-height:1.3}
+.nav-links{display:flex;align-items:center;gap:26px}
+.nav-links a{font-size:.83rem;font-weight:500;color:var(--muted);position:relative;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1.5px;background:var(--p);transition:width .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:.92rem;padding:13px 26px;border-radius:4px;border:1px solid var(--p);color:#fff;background:var(--p);cursor:pointer;transition:transform .2s,box-shadow .3s,background .3s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px -10px rgba(225,29,42,.6);background:var(--p2)}
+.btn.ghost{background:transparent;color:var(--p2)}
+.btn.ghost:hover{background:rgba(225,29,42,.08)}
+.nav-cta{display:flex;align-items:center;gap:18px}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+.burger span{width:26px;height:2px;background:var(--text);transition:.3s}
+.mobile-menu{position:fixed;inset:0;background:rgba(8,8,11,.97);backdrop-filter:blur(10px);z-index:899;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:24px;opacity:0;pointer-events:none;transition:opacity .35s}
+.mobile-menu.open{opacity:1;pointer-events:auto}
+.mobile-menu a{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:1.7rem;color:var(--text);letter-spacing:.02em}
+.mobile-menu a:hover{color:var(--p2)}
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding-bottom:54px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg .img{position:absolute;inset:0;background:url('https://gtautomocion.com/cdn/shop/files/back2.png?width=1920') center/cover no-repeat;opacity:.28}
+.hero-bg .grad{position:absolute;inset:0;background:
+  radial-gradient(1100px 600px at 78% 18%,rgba(225,29,42,.20),transparent 60%),
+  radial-gradient(900px 700px at 12% 88%,rgba(225,29,42,.08),transparent 62%),
+  linear-gradient(180deg,#0c0c10 0%,#0a0a0d 55%,#070709 100%);
+  background-size:200% 200%,200% 200%,100% 100%;animation:gradShift 18s ease-in-out infinite}
+@keyframes gradShift{0%,100%{background-position:0% 0%,100% 100%,0 0}50%{background-position:60% 40%,30% 60%,0 0}}
+.hero-bg .beam{position:absolute;inset:-30%;background:conic-gradient(from 210deg at 72% 22%,transparent 0deg,rgba(225,29,42,.12) 22deg,transparent 48deg,transparent 360deg);mix-blend-mode:screen;animation:beam 22s linear infinite;filter:blur(8px)}
+@keyframes beam{to{transform:rotate(360deg)}}
+.hero-bg .grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 30%,transparent 78%);opacity:.5}
+.hero-bg .vignette{position:absolute;inset:0;z-index:3;background:linear-gradient(180deg,rgba(8,8,11,.55) 0%,transparent 30%,transparent 55%,rgba(8,8,11,.92) 100%)}
+.hero-ghost{position:absolute;right:-2vw;top:6vh;font-family:var(--display);font-weight:800;font-size:clamp(13rem,30vw,32rem);line-height:.8;color:#fff;opacity:.035;z-index:1;pointer-events:none;letter-spacing:-.04em}
+.hero-content{position:relative;z-index:3;width:100%;padding-top:140px}
+.hero h1{font-size:clamp(2.2rem,5.6vw,4.6rem);margin-bottom:6px}
+.hero h1 .accent{display:block;color:var(--p2);-webkit-text-fill-color:var(--p2)}
+.hero h1 .ml{display:inline-block}
+.hero-rot{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(1.1rem,3vw,1.9rem);color:var(--muted);margin-top:22px;display:flex;align-items:baseline;gap:.5em;flex-wrap:wrap}
+.hero-rot .rot{color:var(--text);position:relative;min-width:9ch;display:inline-block}
+.hero-rot .rot b{font-weight:800;color:var(--p2);display:inline-block;transition:opacity .45s,transform .45s}
+.hero-rot .rot b.out{opacity:0;transform:translateY(12px)}
+.hero-desc{max-width:560px;color:var(--muted);font-size:1.02rem;margin-top:26px}
+.hero-actions{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:64px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--line)}
+.stat{background:rgba(18,18,24,.62);backdrop-filter:blur(10px);padding:26px 24px}
+.stat .v{font-family:var(--display);font-weight:800;font-size:clamp(1.7rem,3.6vw,2.6rem);line-height:1;color:var(--text)}
+.stat .v .u{color:var(--p2)}
+.stat .l{font-size:.78rem;color:var(--muted);margin-top:9px;letter-spacing:.02em}
+.scroll-cue{position:absolute;left:32px;bottom:30px;z-index:4;display:flex;align-items:center;gap:12px;color:var(--muted);font-family:var(--display);font-weight:600;letter-spacing:.2em;font-size:.68rem;text-transform:uppercase}
+.scroll-cue .bar{width:1px;height:40px;background:var(--line);position:relative;overflow:hidden}
+.scroll-cue .bar::after{content:"";position:absolute;top:0;left:0;width:100%;height:40%;background:var(--p);animation:cue 2s ease-in-out infinite}
+@keyframes cue{0%{transform:translateY(-100%)}100%{transform:translateY(250%)}}
+/* SECTIONS */
+section{position:relative}
+section[id]{scroll-margin-top:80px}
+.sec{padding:130px 0;position:relative}
+.sec-head{margin-bottom:60px;max-width:760px}
+.sec-head h2{font-size:clamp(2.4rem,6vw,4.4rem);margin-top:18px}
+.sec-head p{color:var(--muted);margin-top:20px;font-size:1.05rem;max-width:640px}
+.bignum{position:absolute;font-family:var(--display);font-weight:800;font-size:clamp(8rem,18vw,20rem);color:#fff;opacity:.03;line-height:.8;pointer-events:none;z-index:0;letter-spacing:-.04em}
+/* QUIÉNES SOMOS */
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center;position:relative;z-index:2}
+.about-copy p{color:#aeb2bf;font-size:1.06rem;margin-top:22px}
+.about-copy p strong{color:var(--text);font-weight:600}
+.framed{position:relative;border:1px solid var(--border);border-radius:10px;padding:14px;background:linear-gradient(180deg,rgba(225,29,42,.05),transparent);overflow:hidden}
+.framed::before{content:"";position:absolute;top:-1px;left:-1px;width:46px;height:46px;border-top:2px solid var(--p);border-left:2px solid var(--p);border-top-left-radius:10px}
+.framed::after{content:"";position:absolute;bottom:-1px;right:-1px;width:46px;height:46px;border-bottom:2px solid var(--p);border-right:2px solid var(--p);border-bottom-right-radius:10px}
+.framed img{border-radius:6px;width:100%;height:420px;object-fit:cover}
+.about-media{position:relative}
+.tag-badge{position:absolute;left:-22px;bottom:-22px;background:var(--p);color:#fff;font-family:var(--display);font-weight:800;font-size:1.2rem;padding:14px 22px;border-radius:6px;box-shadow:0 18px 40px -16px rgba(225,29,42,.7);text-transform:uppercase;letter-spacing:.04em}
+.tag-badge span{display:block;font-size:.62rem;font-weight:600;letter-spacing:.2em;opacity:.85}
+/* SERVICIOS */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:6px}
+.svc-card{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .35s,transform .35s,box-shadow .35s}
+.svc-card:hover{transform:translateY(-6px);border-color:var(--p);box-shadow:0 24px 50px -26px rgba(225,29,42,.4)}
+.svc-media{height:180px;position:relative;background:#0d0d11;overflow:hidden}
+.svc-media img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.svc-card:hover .svc-media img{transform:scale(1.06)}
+.svc-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,13,.1),rgba(15,15,19,.6))}
+.svc-badge{position:absolute;left:22px;bottom:-26px;z-index:2;width:58px;height:58px;border-radius:13px;background:var(--bg2);border:1px solid var(--border);display:grid;place-items:center;color:var(--p2);box-shadow:0 14px 30px -12px rgba(0,0,0,.7)}
+.svc-badge svg{width:28px;height:28px}
+.svc-body{padding:40px 26px 26px;display:flex;flex-direction:column;flex:1}
+.svc-body h3{font-size:1.4rem;font-weight:700;letter-spacing:.01em}
+.svc-body p{color:var(--muted);font-size:.92rem;margin-top:11px;flex:1}
+.svc-foot{margin-top:22px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:18px}
+.svc-price{font-family:var(--display);font-weight:800;font-size:1.5rem;color:var(--text)}
+.svc-price small{font-size:.72rem;color:var(--muted);font-family:var(--body);font-weight:500}
+.svc-cta{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:.8rem;color:var(--p2);cursor:pointer;transition:gap .3s}
+.svc-card:hover .svc-cta{gap:13px}
+/* POR QUÉ */
+.why{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:8px}
+.why-c{padding:30px 26px;border:1px solid var(--line);border-radius:12px;background:var(--card);transition:border-color .35s,transform .35s}
+.why-c:hover{border-color:var(--border);transform:translateY(-5px)}
+.why-c .ic{width:50px;height:50px;border-radius:11px;background:rgba(225,29,42,.1);border:1px solid var(--border);display:grid;place-items:center;color:var(--p2);margin-bottom:18px}
+.why-c .ic svg{width:26px;height:26px}
+.why-c h4{font-family:var(--display);font-weight:700;font-size:1.2rem;text-transform:uppercase;letter-spacing:.02em}
+.why-c p{color:var(--muted);font-size:.9rem;margin-top:10px}
+/* COMPROBACIÓN */
+.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.check-copy p{color:#aeb2bf;font-size:1.06rem;margin-top:20px}
+.check-list{border:1px solid var(--border);border-radius:12px;background:linear-gradient(180deg,rgba(225,29,42,.04),transparent);overflow:hidden}
+.check-row{display:flex;align-items:center;gap:18px;padding:22px 26px;border-bottom:1px solid var(--line)}
+.check-row:last-child{border-bottom:0}
+.check-row .ic{width:44px;height:44px;border-radius:11px;background:rgba(225,29,42,.1);border:1px solid var(--border);display:grid;place-items:center;color:var(--p2);flex-shrink:0}
+.check-row .ic svg{width:22px;height:22px}
+.check-row b{font-family:var(--display);font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:.02em;display:block}
+.check-row span{color:var(--muted);font-size:.86rem}
+/* FAQ */
+.faq{max-width:840px;margin:0 auto}
+.faq-item{border:1px solid var(--line);border-radius:12px;margin-bottom:12px;background:var(--card);overflow:hidden}
+.faq-q{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 26px;cursor:pointer;font-family:var(--display);font-weight:600;font-size:1.18rem;text-transform:uppercase;letter-spacing:.01em}
+.faq-q .pl{color:var(--p2);font-size:1.5rem;transition:transform .25s;flex-shrink:0;line-height:1}
+.faq-item.open .pl{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:.3s;padding:0 26px}
+.faq-item.open .faq-a{max-height:260px;padding:0 26px 24px}
+.faq-a p{color:var(--muted);font-size:.98rem}
+/* CONTACTO */
+.contacto{background:linear-gradient(180deg,var(--bg) 0%,#060608 100%);border-top:1px solid var(--line)}
+.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:start}
+.contact-info{display:grid;grid-template-columns:1fr 1fr;gap:30px 40px;margin-top:40px}
+.cinfo .k{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;color:var(--p2);margin-bottom:8px}
+.cinfo .val{color:var(--text);font-size:1rem;line-height:1.5}
+.cinfo .val a:hover{color:var(--p2)}
+.contact-cta{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:42px 38px}
+.contact-cta h3{font-size:2rem;font-weight:700}
+.contact-cta p{color:var(--muted);margin:16px 0 28px;font-size:.98rem}
+.contact-cta .btn{width:100%;justify-content:center;margin-bottom:12px}
+.contact-cta .btn.ghost{border-color:var(--line);color:var(--text)}
+footer.foot{border-top:1px solid var(--line);padding:34px 0;margin-top:110px}
+.foot-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;color:var(--muted);font-size:.82rem}
+.foot-wm b{color:var(--p2)}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(38px)}
+.reveal.is-in{opacity:1;transform:none;transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+/* CHATBOT */
+.fab{position:fixed;right:26px;bottom:26px;z-index:950;width:64px;height:64px;border-radius:50%;background:var(--p);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 16px 40px -10px rgba(225,29,42,.65);transition:transform .3s}
+.fab:hover{transform:scale(1.08) rotate(12deg)}
+.fab svg{width:32px;height:32px;color:#fff}
+.fab .ping{position:absolute;inset:0;border-radius:50%;border:2px solid var(--p);animation:fabping 2.6s ease-out infinite}
+@keyframes fabping{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.5);opacity:0}}
+.chat{position:fixed;right:26px;bottom:26px;z-index:960;width:392px;max-width:calc(100vw - 32px);height:600px;max-height:calc(100vh - 40px);background:var(--bg2);border:1px solid var(--border);border-radius:16px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.9);transform:translateY(30px) scale(.96);opacity:0;pointer-events:none;transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .35s}
+.chat.open{transform:none;opacity:1;pointer-events:auto}
+.chat-head{display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--card);border-bottom:1px solid var(--line)}
+.chat-ava{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--p),#8f0d16);display:grid;place-items:center;flex-shrink:0;font-family:var(--display);font-weight:800;color:#fff;font-size:1.3rem}
+.chat-head .hi b{font-family:var(--display);font-weight:800;font-size:1.18rem;text-transform:uppercase;letter-spacing:.04em;display:block;line-height:1}
+.chat-head .hi small{color:var(--muted);font-size:.74rem;display:flex;align-items:center;gap:6px;margin-top:4px}
+.chat-head .hi small i{width:7px;height:7px;border-radius:50%;background:var(--g);display:inline-block}
+.chat-x{margin-left:auto;background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.5rem;line-height:1;padding:4px 8px;transition:color .2s}
+.chat-x:hover{color:var(--text)}
+.chat-body{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:14px;scrollbar-width:thin;scrollbar-color:var(--p) transparent}
+.chat-body::-webkit-scrollbar{width:6px}
+.chat-body::-webkit-scrollbar-thumb{background:rgba(225,29,42,.4);border-radius:3px}
+.msg{max-width:84%;padding:12px 15px;border-radius:13px;font-size:.92rem;line-height:1.5;white-space:pre-wrap;word-wrap:break-word;animation:msgin .35s ease}
+@keyframes msgin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.msg.bot{align-self:flex-start;background:var(--card);border:1px solid var(--line);border-bottom-left-radius:4px}
+.msg.me{align-self:flex-end;background:var(--p);color:#fff;font-weight:500;border-bottom-right-radius:4px}
+.typing{align-self:flex-start;display:flex;gap:5px;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:13px;border-bottom-left-radius:4px}
+.typing span{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:typing 1.2s infinite}
+.typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
+@keyframes typing{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
+.quicks{display:flex;flex-wrap:wrap;gap:8px;padding:0 20px 14px}
+.quick{font-family:var(--body);font-size:.8rem;font-weight:500;border:1px solid var(--border);background:rgba(225,29,42,.05);color:var(--p2);border-radius:100px;padding:8px 13px;cursor:pointer;transition:background .25s,transform .2s}
+.quick:hover{background:rgba(225,29,42,.16);transform:translateY(-2px)}
+.chat-input{display:flex;gap:10px;padding:14px 16px;border-top:1px solid var(--line);background:var(--card)}
+.chat-input input{flex:1;background:var(--bg);border:1px solid var(--line);border-radius:9px;color:var(--text);padding:12px 14px;font-family:var(--body);font-size:.92rem;outline:none;transition:border-color .25s}
+.chat-input input:focus{border-color:var(--border)}
+.chat-input button{background:var(--p);border:none;border-radius:9px;width:46px;cursor:pointer;display:grid;place-items:center;flex-shrink:0;transition:transform .2s,opacity .2s}
+.chat-input button:hover{transform:scale(1.06)}
+.chat-input button:disabled{opacity:.45;cursor:default}
+.chat-input button svg{width:20px;height:20px;color:#fff}
+/* RESPONSIVE */
+@media(max-width:900px){
+  .wrap{padding:0 22px}
+  .nav-links{display:none}
+  .nav-cta .btn:not(.burger){display:none}
+  .burger{display:flex}
+  .sec{padding:88px 0}
+  .about-grid,.check-grid,.contact-grid{grid-template-columns:1fr;gap:46px}
+  .about-media{order:-1}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .contact-info{grid-template-columns:1fr 1fr}
+  .hero-content{padding-top:110px}
+  .scroll-cue{display:none}
+}
+@media(max-width:600px){
+  .wrap{padding:0 18px}
+  .svc-grid,.why-grid,.contact-info{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .hero-content{padding-top:90px}
+  .tag-badge{left:50%;transform:translateX(-50%);bottom:-20px}
+  .chat{right:0;bottom:0;width:100vw;height:100vh;max-height:100vh;border-radius:0}
+  .fab{right:18px;bottom:18px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .reveal{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="nav-logo" aria-label="GT Automoción inicio">
+      <span class="mark">GT</span>
+      <span class="sep"></span>
+      <small>Taller<br>Ángel Gaitán</small>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#top" class="active">Inicio</a>
+      <a href="#taller">El taller</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#porque">Por qué GT</a>
+      <a href="#comprobacion">Comprobación</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn" onclick="openChat()">Reservar cita</a>
+      <div class="burger" id="burger" aria-label="Menú"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#top">Inicio</a>
+  <a href="#taller">El taller</a>
+  <a href="#servicios">Servicios</a>
+  <a href="#porque">Por qué GT</a>
+  <a href="#comprobacion">Comprobación</a>
+  <a href="#faq">Preguntas</a>
+  <a href="#contacto">Contacto</a>
+</div>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <div class="img"></div>
+    <div class="grad"></div>
+    <div class="beam"></div>
+    <div class="grid"></div>
+    <div class="vignette"></div>
+  </div>
+  <div class="hero-ghost" aria-hidden="true">GT</div>
+  <div class="wrap hero-content">
+    <h1>
+      <span class="ml">Tu coche en manos</span><br>
+      <span class="accent">expertas.</span>
+    </h1>
+    <div class="hero-rot">
+      <span>Especialistas en</span>
+      <span class="rot"><b id="rotWord">Mantenimiento</b></span>
+    </div>
+    <p class="hero-desc reveal">El rigor del taller de Ángel Gaitán: diagnóstico honesto, presupuesto claro y todo documentado. Mantenimiento, diagnosis, comprobación antes de comprar y peritajes. Reserva tu cita online en segundos.</p>
+    <div class="hero-actions reveal">
+      <a class="btn" onclick="openChat()">Reservar mi cita</a>
+      <a href="#servicios" class="btn ghost">Ver servicios</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="stat"><div class="v">Diagnóstico<span class="u">.</span></div><div class="l">Honesto y documentado</div></div>
+      <div class="stat"><div class="v">Pre-compra</div><div class="l">Revisamos el coche antes</div></div>
+      <div class="stat"><div class="v">Mercedes<span class="u">.</span></div><div class="l">Diagnosis especializada</div></div>
+      <div class="stat"><div class="v">Online</div><div class="l">Reserva en 60 segundos</div></div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span class="bar"></span>Scroll</div>
+</section>
+<!-- EL TALLER -->
+<section class="sec" id="taller">
+  <span class="bignum" style="left:-2vw;top:30px">01</span>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">El taller</span>
+      <h2>Mecánica bien hecha,<br>explicada de verdad</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <p>GT Automoción es el taller de <strong>Ángel Gaitán</strong>, donde el conocimiento del motor se pone al servicio de tu coche sin atajos ni sorpresas.</p>
+        <p>Cada intervención parte de un <strong>diagnóstico honesto</strong> y un presupuesto claro antes de tocar nada. Y todo queda <strong>documentado con fotos e informe</strong>, para que sepas exactamente qué se ha hecho y por qué.</p>
+        <p>Detrás de cada revisión está la experiencia del taller y la formación de <strong>Training Tech Academy</strong>: el mismo rigor que ves en sus vídeos, ahora trabajando por ti.</p>
+      </div>
+      <div class="about-media reveal">
+        <div class="framed">
+          <img src="https://gtautomocion.com/cdn/shop/files/gt-com-5.png?width=1200" alt="Taller GT Automoción — mecánica y electromecánica" loading="lazy" />
+        </div>
+        <div class="tag-badge"><span>Taller</span>GT AUTOMOCIÓN</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SERVICIOS -->
+<section class="sec" id="servicios" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <span class="bignum" style="right:-2vw;top:20px">02</span>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Servicios</span>
+      <h2>Todo lo que tu<br>coche necesita</h2>
+      <p>Reserva cualquier servicio con día y hora a través de Diego. El taller confirma tu cita por teléfono.</p>
+    </div>
+    <div class="svc-grid">
+      <!-- 1 -->
+      <div class="svc-card reveal">
+        <div class="svc-media">
+          <img src="https://gtautomocion.com/cdn/shop/files/gt-com-6.png?width=832" alt="Cita de mantenimiento GT Automoción" loading="lazy" />
+          <span class="svc-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+        </div>
+        <div class="svc-body">
+          <h3>Mantenimiento</h3>
+          <p>Motor y caja de cambios. Aceite, filtros, frenos, líquidos, neumáticos, bujías y más.</p>
+          <div class="svc-foot"><div class="svc-price">200€ <small>desde</small></div><span class="svc-cta" onclick="openChat('Mantenimiento')">Reservar<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </div>
+      <!-- 2 -->
+      <div class="svc-card reveal">
+        <div class="svc-media">
+          <img src="https://gtautomocion.com/cdn/shop/files/gt-com-5.png?width=832" alt="Mecánica y electromecánica GT Automoción" loading="lazy" />
+          <span class="svc-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></span>
+        </div>
+        <div class="svc-body">
+          <h3>Mecánica y electromecánica</h3>
+          <p>Diagnóstico y reparación de averías mecánicas y eléctricas con equipo especializado.</p>
+          <div class="svc-foot"><div class="svc-price">50€ <small>diagnóstico</small></div><span class="svc-cta" onclick="openChat('Mecánica y electromecánica')">Reservar<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </div>
+      <!-- 3 -->
+      <div class="svc-card reveal">
+        <div class="svc-media">
+          <img src="https://gtautomocion.com/cdn/shop/files/gt-com-3.png?width=832" alt="Diagnosis y actualización Mercedes GT Automoción" loading="lazy" />
+          <span class="svc-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 7.8 8 9 4.6-1.2 8-4 8-9V5z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        </div>
+        <div class="svc-body">
+          <h3>Diagnosis Mercedes</h3>
+          <p>Diagnosis y actualización de software específica para vehículos Mercedes-Benz.</p>
+          <div class="svc-foot"><div class="svc-price">287,50€</div><span class="svc-cta" onclick="openChat('Diagnosis Mercedes')">Reservar<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </div>
+      <!-- 4 -->
+      <div class="svc-card reveal">
+        <div class="svc-media">
+          <img src="https://gtautomocion.com/cdn/shop/files/gt-com-7.png?width=832" alt="Comprobación pre-compra GT Automoción" loading="lazy" />
+          <span class="svc-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span>
+        </div>
+        <div class="svc-body">
+          <h3>Comprobación pre-compra</h3>
+          <p>Revisamos el vehículo antes de comprarlo: nota informativa, fotos y asesoramiento.</p>
+          <div class="svc-foot"><div class="svc-price">250,47€</div><span class="svc-cta" onclick="openChat('Comprobación pre-compra')">Reservar<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </div>
+      <!-- 5 -->
+      <div class="svc-card reveal">
+        <div class="svc-media">
+          <img src="https://gtautomocion.com/cdn/shop/files/P6080921-scaled_6e020f05-ce3f-4d79-817b-cbd9779d0f0a.jpg?width=832" alt="Peritaje e informe pericial GT Automoción" loading="lazy" />
+          <span class="svc-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg></span>
+        </div>
+        <div class="svc-body">
+          <h3>Peritaje e informe pericial</h3>
+          <p>Asesoramiento y estudio de viabilidad para informes periciales, presencial u online.</p>
+          <div class="svc-foot"><div class="svc-price">120€</div><span class="svc-cta" onclick="openChat('Peritaje / informe pericial')">Reservar<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </div>
+      <!-- 6 -->
+      <div class="svc-card reveal">
+        <div class="svc-media">
+          <img src="https://gtautomocion.com/cdn/shop/files/5793965299999640968_121_a954a8b5-e7ac-4d70-a57e-88bbb47f8b46.jpg?width=832" alt="Asesoramiento telefónico GT Automoción" loading="lazy" />
+          <span class="svc-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+        </div>
+        <div class="svc-body">
+          <h3>Asesoramiento telefónico</h3>
+          <p>Cuéntanos tu situación, envíanos documentación y te orientamos a distancia.</p>
+          <div class="svc-foot"><div class="svc-price">103,53€</div><span class="svc-cta" onclick="openChat('Asesoramiento telefónico')">Reservar<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- POR QUÉ -->
+<section class="sec why" id="porque">
+  <span class="bignum" style="left:-2vw;top:30px">03</span>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Por qué GT</span>
+      <h2>Un taller que te explica<br>lo que le pasa a tu coche</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-c reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>Transparencia total</h4><p>Presupuesto claro antes de tocar nada. Sin cargos ocultos ni piezas innecesarias.</p></div>
+      <div class="why-c reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><h4>Formación real</h4><p>El conocimiento del taller de Ángel Gaitán y Training Tech Academy en cada diagnóstico.</p></div>
+      <div class="why-c reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></svg></div><h4>Todo documentado</h4><p>Fotos e informe de cada intervención para que sepas exactamente qué se ha hecho.</p></div>
+      <div class="why-c reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></div><h4>Cita al instante</h4><p>Reserva online eligiendo día y hora con Diego. Sin llamadas eternas ni esperas.</p></div>
+    </div>
+  </div>
+</section>
+<!-- COMPROBACIÓN -->
+<section class="sec" id="comprobacion">
+  <span class="bignum" style="right:-2vw;top:20px">04</span>
+  <div class="wrap">
+    <div class="check-grid">
+      <div class="check-copy reveal">
+        <span class="eyebrow">Comprobación pre-compra</span>
+        <h2 style="font-size:clamp(2rem,4.4vw,3.2rem);margin-top:18px">¿Vas a comprar un coche de segunda mano?</h2>
+        <p>No lo compres a ciegas. Lo revisamos por ti: estado real del motor, electrónica, historial y posibles sorpresas. Recibes una nota informativa con fotos y, si quieres, explicación y asesoramiento completo antes de decidir.</p>
+        <div style="margin-top:32px"><a class="btn" onclick="openChat('Comprobación pre-compra')">Reservar comprobación · 250,47€</a></div>
+      </div>
+      <div class="check-list reveal">
+        <div class="check-row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><div><b>Nota informativa y fotos</b><span>Estado real del vehículo documentado</span></div></div>
+        <div class="check-row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><div><b>Revisión mecánica</b><span>Motor, caja, frenos y suspensión</span></div></div>
+        <div class="check-row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 20h8M12 18v2"/></svg></div><div><b>Diagnosis electrónica</b><span>Errores y actualizaciones de software</span></div></div>
+        <div class="check-row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div><b>Asesoramiento opcional</b><span>Te explicamos si conviene comprarlo</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- FAQ -->
+<section class="sec" id="faq" style="background:var(--bg2);border-top:1px solid var(--line)">
+  <span class="bignum" style="left:-2vw;top:20px">05</span>
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin:0 auto 56px;text-align:center">
+      <span class="eyebrow" style="justify-content:center">Preguntas frecuentes</span>
+      <h2>Lo que más nos preguntan</h2>
+    </div>
+    <div class="faq">
+      <div class="faq-item reveal"><div class="faq-q">¿Cómo reservo una cita?<span class="pl">+</span></div><div class="faq-a"><p>Habla con Diego, nuestro asistente. Eliges el servicio, dejas tu nombre y teléfono, y el taller te llama para confirmar la cita.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q">¿Comprobáis coches antes de comprarlos?<span class="pl">+</span></div><div class="faq-a"><p>Sí. La Cita Comprobación GT revisa el vehículo antes de la compra, con nota informativa, fotos y opción de explicación y asesoramiento.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q">¿Trabajáis con Mercedes?<span class="pl">+</span></div><div class="faq-a"><p>Sí, ofrecemos diagnosis y actualización específica para Mercedes con equipo especializado.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q">¿Puedo pedir un peritaje o informe pericial?<span class="pl">+</span></div><div class="faq-a"><p>Sí. Realizamos asesoramiento y estudio de viabilidad para informes periciales, tanto presencial como online.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q">¿Ofrecéis asesoramiento a distancia?<span class="pl">+</span></div><div class="faq-a"><p>Sí, disponemos de asesoramiento telefónico. Nos envías tu situación y documentación y te orientamos.</p></div></div>
+    </div>
+  </div>
+</section>
+<!-- CONTACTO -->
+<section class="sec contacto" id="contacto">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <div class="sec-head reveal" style="margin-bottom:10px">
+          <span class="eyebrow">Contacto</span>
+          <h2>Hablemos de<br>tu coche</h2>
+        </div>
+        <div class="contact-info reveal">
+          <div class="cinfo"><div class="k">Reservas</div><div class="val">A través de Diego,<br>nuestro asistente online</div></div>
+          <div class="cinfo"><div class="k">Web</div><div class="val"><a href="https://gtautomocion.com" target="_blank" rel="noopener">gtautomocion.com</a></div></div>
+          <div class="cinfo"><div class="k">Servicios</div><div class="val">Mantenimiento · Diagnosis<br>Comprobación · Peritajes</div></div>
+          <div class="cinfo"><div class="k">Formación</div><div class="val">Training Tech Academy<br>Ángel Gaitán</div></div>
+        </div>
+      </div>
+      <div class="contact-cta reveal">
+        <h3>Reserva tu cita</h3>
+        <p>Cuéntale a Diego qué necesita tu coche. Recoge tus datos y el taller te contacta para confirmar la cita.</p>
+        <button class="btn" onclick="openChat()">Hablar con Diego</button>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="foot-inner">
+        <span>© 2026 GT Automoción · Taller mecánico · gtautomocion.com</span>
+        <span class="foot-wm">Demo IA por <b>WhiteMoon</b></span>
+      </div>
+    </footer>
+  </div>
+</section>
+<!-- CHATBOT DIEGO -->
+<button class="fab" id="fab" aria-label="Abrir asistente Diego" onclick="toggleChat()">
+  <span class="ping"></span>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+</button>
+<div class="chat" id="chat" aria-live="polite">
+  <div class="chat-head">
+    <div class="chat-ava">D</div>
+    <div class="hi"><b>Diego</b><small><i></i>Asistente · GT Automoción</small></div>
+    <button class="chat-x" aria-label="Cerrar" onclick="toggleChat()">×</button>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="quicks" id="quicks">
+    <button class="quick" onclick="quickSend('Quiero una cita de mantenimiento')">Mantenimiento</button>
+    <button class="quick" onclick="quickSend('Diagnosis para mi Mercedes')">Diagnosis Mercedes</button>
+    <button class="quick" onclick="quickSend('Comprobar un coche antes de comprarlo')">Comprobación pre-compra</button>
+    <button class="quick" onclick="quickSend('Necesito un peritaje')">Peritaje</button>
+    <button class="quick" onclick="quickSend('Quiero reservar cita')">Reservar cita</button>
+  </div>
+  <form class="chat-input" id="chatForm" autocomplete="off">
+    <input id="chatInput" type="text" placeholder="Escribe tu consulta…" aria-label="Mensaje" />
+    <button type="submit" id="chatSend" aria-label="Enviar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+    </button>
+  </form>
+</div>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* NAV */
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40), {passive:true});
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobileMenu');
+burger.addEventListener('click', () => { burger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mobileMenu.classList.remove('open'); burger.classList.remove('open'); }));
+/* scroll-spy */
+const spy=[...document.querySelectorAll('#navLinks a')];
+addEventListener('scroll',()=>{let cur='';document.querySelectorAll('section[id]').forEach(s=>{if(scrollY>=s.offsetTop-140)cur=s.id});spy.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur))},{passive:true});
+/* ROTATING WORD */
+const words = ['Mantenimiento','Diagnosis','Comprobación','Peritajes'];
+let wi = 0; const rotEl = document.getElementById('rotWord');
+if (!REDUCED) setInterval(() => { rotEl.classList.add('out'); setTimeout(() => { wi=(wi+1)%words.length; rotEl.textContent=words[wi]; rotEl.classList.remove('out'); }, 450); }, 2400);
+/* FAQ */
+document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>q.parentElement.classList.toggle('open')));
+/* REVEAL */
+function showAll(){document.querySelectorAll('.reveal').forEach(e=>e.classList.add('is-in'))}
+window.addEventListener('DOMContentLoaded', function(){
+  if (REDUCED || typeof gsap === 'undefined'){ showAll(); return; }
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.batch('.reveal', {start:'top 88%', onEnter: b => b.forEach(x=>x.classList.add('is-in'))});
+  gsap.from('.hero h1 .ml, .hero h1 .accent', {y:60, opacity:0, duration:1, stagger:.12, ease:'power4.out', delay:.15});
+  gsap.to('.hero-ghost', {yPercent:18, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
+  gsap.utils.toArray('.bignum').forEach(n => gsap.to(n, {yPercent:-14, ease:'none', scrollTrigger:{trigger:n.closest('section'), start:'top bottom', end:'bottom top', scrub:true}}));
+  gsap.utils.toArray('.framed img').forEach(img => gsap.to(img, {yPercent:-6, ease:'none', scrollTrigger:{trigger:img.closest('section'), start:'top bottom', end:'bottom top', scrub:true}}));
+});
+/* ===== CHATBOT DIEGO — 100% cliente, lead por WhatsApp ===== */
+const WHATSAPP = '34643199580';
+const chat = document.getElementById('chat');
+const fab = document.getElementById('fab');
+const chatBody = document.getElementById('chatBody');
+const chatInput = document.getElementById('chatInput');
+const chatSend = document.getElementById('chatSend');
+const quicks = document.getElementById('quicks');
+let greeted=false, estado='inicio', leadNombre='', leadTelefono='', leadServicio='';
+function toggleChat(){
+  const open = chat.classList.toggle('open');
+  fab.style.display = open ? 'none' : 'flex';
+  if (open && !greeted){ greeted=true; setTimeout(()=>botSay('Hola, soy Diego, del taller GT Automoción. Puedo ayudarte con mantenimiento, diagnosis Mercedes, comprobación pre-compra, peritajes o reservar tu cita. ¿Qué necesita tu coche?'), 280); }
+  if (open) setTimeout(()=>chatInput.focus(), 350);
+}
+function openChat(servicio){
+  if (!chat.classList.contains('open')) toggleChat();
+  if (servicio){ leadServicio=servicio; if(!greeted){greeted=true;} setTimeout(()=>{ addMsg(servicio,'me'); showTyping(); setTimeout(()=>{hideTyping(); estado='esperando_nombre'; botSay('Perfecto, '+servicio+'. Para reservar tu cita, ¿a nombre de quién la pongo?'); if(quicks)quicks.style.display='none';},500); },320); }
+}
+function addMsg(text,who){const el=document.createElement('div');el.className='msg '+who;el.textContent=text;chatBody.appendChild(el);chatBody.scrollTop=chatBody.scrollHeight}
+function botSay(text){addMsg(text,'bot')}
+function showTyping(){const t=document.createElement('div');t.className='typing';t.id='typing';t.innerHTML='<span></span><span></span><span></span>';chatBody.appendChild(t);chatBody.scrollTop=chatBody.scrollHeight}
+function hideTyping(){const t=document.getElementById('typing');if(t)t.remove()}
+function enviarWhatsApp(nombre,telefono,servicio){
+  const base = servicio ? `Hola, soy ${nombre} (tel: ${telefono}). Quiero reservar: ${servicio} en GT Automoción.` : `Hola, soy ${nombre} (tel: ${telefono}). Quiero reservar cita en GT Automoción.`;
+  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(base)}`,'_blank');
+}
+function procesarMensaje(texto){
+  const t=texto.toLowerCase().trim();
+  if (estado==='esperando_nombre'){ leadNombre=texto.trim(); estado='esperando_telefono'; return `Gracias, ${leadNombre}. ¿Un teléfono de contacto para confirmarte la cita?`; }
+  if (estado==='esperando_telefono'){ leadTelefono=texto.trim(); estado='inicio'; enviarWhatsApp(leadNombre,leadTelefono,leadServicio); const s=leadServicio; leadServicio=''; return `Perfecto, ${leadNombre}. Te abro WhatsApp para terminar de reservar${s?' tu '+s.toLowerCase():''}. Un compañero de GT Automoción te confirmará la cita. Si no se abre, escríbenos al +34 643 199 580.`; }
+  if (t.includes('mantenim') || t.includes('aceite') || t.includes('revision') || t.includes('revisión')){ leadServicio='Mantenimiento'; estado='esperando_nombre'; return 'El mantenimiento (motor y caja de cambios) parte desde 200€: aceite, filtros, frenos, líquidos, neumáticos y más. Para reservar, ¿a nombre de quién?'; }
+  if (t.includes('mercedes') || t.includes('diagnos')){ leadServicio='Diagnosis Mercedes'; estado='esperando_nombre'; return 'Hacemos diagnosis y actualización específica de Mercedes (287,50€) con equipo especializado. ¿A nombre de quién pongo la cita?'; }
+  if (t.includes('comprob') || t.includes('comprar') || t.includes('segunda mano') || t.includes('pre-compra') || t.includes('precompra')){ leadServicio='Comprobación pre-compra'; estado='esperando_nombre'; return 'La comprobación pre-compra (250,47€) revisa el coche antes de que lo compres: nota informativa, fotos y asesoramiento. ¿A nombre de quién la reservo?'; }
+  if (t.includes('perit') || t.includes('informe')){ leadServicio='Peritaje / informe pericial'; estado='esperando_nombre'; return 'Realizamos peritajes y estudio de viabilidad para informes periciales (120€), presencial u online. ¿A nombre de quién?'; }
+  if (t.includes('mecánic') || t.includes('mecanic') || t.includes('electro') || t.includes('avería') || t.includes('averia') || t.includes('ruido') || t.includes('fallo')){ leadServicio='Mecánica y electromecánica'; estado='esperando_nombre'; return 'Diagnosticamos y reparamos averías mecánicas y eléctricas (diagnóstico 50€). Para reservar, ¿a nombre de quién?'; }
+  if (t.includes('teléfon') || t.includes('telefon') || t.includes('distancia') || t.includes('asesor')){ leadServicio='Asesoramiento telefónico'; estado='esperando_nombre'; return 'El asesoramiento telefónico (103,53€) te orienta a distancia: nos envías tu caso y documentación. ¿A nombre de quién?'; }
+  if (t.includes('cita') || t.includes('reserv') || t.includes('presupuest') || t.includes('precio') || t.includes('whatsapp') || t.includes('contact')){ estado='esperando_nombre'; return 'Con gusto reservo tu cita. ¿A nombre de quién la pongo?'; }
+  if (t.includes('hola') || t.includes('buenas') || t.includes('buenos')){ return 'Hola, soy Diego, de GT Automoción. ¿Con qué servicio te ayudo: mantenimiento, diagnosis Mercedes, comprobación pre-compra, mecánica o peritaje?'; }
+  return 'Puedo ayudarte con mantenimiento, diagnosis Mercedes, comprobación pre-compra, mecánica y electromecánica, peritajes o asesoramiento telefónico. Escribe "cita" y reservamos tu visita al taller.';
+}
+function send(text){
+  if(!text||!text.trim())return;
+  if(quicks)quicks.style.display='none';
+  addMsg(text,'me'); chatInput.value=''; chatSend.disabled=true; showTyping();
+  const reply=procesarMensaje(text);
+  setTimeout(()=>{hideTyping();botSay(reply);chatSend.disabled=false;chatInput.focus()},520);
+}
+function quickSend(text){send(text)}
+document.getElementById('chatForm').addEventListener('submit',e=>{e.preventDefault();send(chatInput.value)});
+</script>
+</body>
+</html>
