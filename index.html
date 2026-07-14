@@ -95,6 +95,10 @@ header.nav.scrolled::after{border-bottom-color:var(--line)}
 .btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px -10px rgba(225,29,42,.6);background:var(--p2)}
 .btn.ghost{background:transparent;color:var(--p2)}
 .btn.ghost:hover{background:rgba(225,29,42,.08)}
+/* Chip claro Training Tech Academy (logo fondo negro sobre hero oscuro) */
+.tta-chip{display:inline-flex;align-items:center;background:#fff;border:1px solid rgba(255,255,255,.9);border-radius:6px;padding:8px 16px;line-height:0;box-shadow:0 8px 24px -14px rgba(0,0,0,.6);transition:transform .2s,box-shadow .3s}
+.tta-chip:hover{transform:translateY(-2px);box-shadow:0 12px 30px -12px rgba(0,0,0,.7)}
+.tta-chip img{height:30px;width:auto;display:block;border-radius:3px}
 .nav-cta{display:flex;align-items:center;gap:18px}
 .nav-shop{display:inline-flex;align-items:center;justify-content:center;color:var(--muted);transition:color .25s,transform .2s}
 .nav-shop:hover{color:var(--p2);transform:translateY(-1px)}
@@ -129,7 +133,7 @@ header.nav.scrolled::after{border-bottom-color:var(--line)}
 .hero-rot .rot b{font-weight:800;color:var(--p2);display:inline-block;transition:opacity .45s,transform .45s}
 .hero-rot .rot b.out{opacity:0;transform:translateY(12px)}
 .hero-desc{max-width:560px;color:var(--muted);font-size:1.02rem;margin-top:26px}
-.hero-actions{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap}
+.hero-actions{display:flex;align-items:center;gap:16px;margin-top:34px;flex-wrap:wrap}
 .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:64px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--line)}
 .stat{background:rgba(18,18,24,.62);backdrop-filter:blur(10px);padding:26px 24px}
 .stat .v{font-family:var(--display);font-weight:800;font-size:clamp(1.7rem,3.6vw,2.6rem);line-height:1;color:var(--text)}
@@ -398,7 +402,9 @@ footer.foot{border-top:1px solid var(--line);padding:34px 0;margin-top:110px}
     <p class="hero-desc reveal">El rigor del taller de Ángel Gaitán: diagnóstico honesto, presupuesto claro y todo documentado. Mantenimiento, diagnosis, comprobación antes de comprar y peritajes. Reserva tu cita online en segundos.</p>
     <div class="hero-actions reveal">
       <a class="btn" onclick="openChat()">Reservar mi cita</a>
-      <a href="#servicios" class="btn ghost">Ver servicios</a>
+      <a href="https://trainingtech.academy/" target="_blank" rel="noopener" class="tta-chip" aria-label="Training Tech Academy">
+        <img src="training-tech-academy.jpeg" alt="Training Tech Academy" width="143" height="102">
+      </a>
     </div>
     <div class="hero-stats reveal">
       <div class="stat"><div class="v">Diagnóstico<span class="u">.</span></div><div class="l">Honesto y documentado</div></div>
