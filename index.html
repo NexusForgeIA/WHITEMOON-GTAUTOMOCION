@@ -104,7 +104,7 @@ header.nav.scrolled::after{border-bottom-color:var(--line)}
 /* HERO */
 .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding-bottom:54px;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg .img{position:absolute;inset:0;background:url('angel-gaitan.webp') 60% top/cover no-repeat;opacity:.6}
+.hero-bg .img{position:absolute;inset:0;background:url('angel-gaitan.webp') 18% top/120% auto no-repeat;opacity:.6}
 .hero-bg .grad{position:absolute;inset:0;background:
   radial-gradient(1100px 600px at 78% 18%,rgba(225,29,42,.20),transparent 60%),
   radial-gradient(900px 700px at 12% 88%,rgba(225,29,42,.08),transparent 62%),
@@ -115,7 +115,7 @@ header.nav.scrolled::after{border-bottom-color:var(--line)}
 @keyframes beam{to{transform:rotate(360deg)}}
 .hero-bg .grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 30%,transparent 78%);opacity:.5}
 .hero-bg .vignette{position:absolute;inset:0;z-index:3;background:linear-gradient(180deg,rgba(8,8,11,.5) 0%,transparent 32%,transparent 52%,rgba(8,8,11,.96) 100%),linear-gradient(90deg,rgba(8,8,11,.7) 0%,rgba(8,8,11,.2) 42%,transparent 68%)}
-.hero-ghost{position:absolute;right:-2vw;top:6vh;font-family:var(--display);font-weight:800;font-size:clamp(13rem,30vw,32rem);line-height:.8;color:#fff;opacity:.035;z-index:1;pointer-events:none;letter-spacing:-.04em}
+.hero-ghost{display:none}
 .hero-content{position:relative;z-index:3;width:100%;padding-top:140px}
 .hero h1{font-size:clamp(2.2rem,5.6vw,4.6rem);margin-bottom:6px}
 .hero h1 .accent{display:block;color:var(--p2);-webkit-text-fill-color:var(--p2)}
@@ -272,6 +272,7 @@ footer.foot{border-top:1px solid var(--line);padding:34px 0;margin-top:110px}
   .contact-info{grid-template-columns:1fr 1fr}
   .hero-content{padding-top:110px}
   .scroll-cue{display:none}
+  .hero-bg .img{background-size:cover;background-position:72% top}
 }
 @media(max-width:600px){
   .wrap{padding:0 18px}
