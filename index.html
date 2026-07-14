@@ -271,6 +271,27 @@ footer.foot{border-top:1px solid var(--line);padding:34px 0;margin-top:110px}
 .quicks{display:flex;flex-wrap:wrap;gap:8px;padding:0 20px 14px}
 .quick{font-family:var(--body);font-size:.8rem;font-weight:500;border:1px solid var(--border);background:rgba(225,29,42,.05);color:var(--p2);border-radius:100px;padding:8px 13px;cursor:pointer;transition:background .25s,transform .2s}
 .quick:hover{background:rgba(225,29,42,.16);transform:translateY(-2px)}
+/* AGENDA (calendario + franjas) */
+.cal{align-self:flex-start;width:290px;max-width:100%;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px;animation:msgin .35s ease}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cal-title{font-family:var(--display);font-weight:700;text-transform:capitalize;letter-spacing:.02em;font-size:1.04rem;color:var(--text)}
+.cal-nav{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--text);cursor:pointer;font-size:1.15rem;line-height:1;display:grid;place-items:center;transition:border-color .2s,color .2s}
+.cal-nav:hover:not(:disabled){border-color:var(--p);color:var(--p2)}
+.cal-nav:disabled{opacity:.3;cursor:default}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal-dow{margin-bottom:6px}
+.cal-dow span{text-align:center;font-size:.66rem;color:var(--muted);font-weight:600;padding:2px 0;text-transform:uppercase}
+.cal-day{aspect-ratio:1;border:none;background:transparent;color:var(--text);border-radius:7px;cursor:pointer;font-family:var(--body);font-size:.82rem;display:grid;place-items:center;transition:background .18s,color .18s}
+.cal-day:hover:not(:disabled){background:rgba(225,29,42,.15);color:var(--p2)}
+.cal-day.disabled{color:var(--muted);opacity:.32;cursor:default}
+.cal-day.empty{cursor:default}
+.cal-day.sel{background:var(--p);color:#fff}
+.cal.locked .cal-day:not(.sel){opacity:.4;cursor:default}
+.slots{display:flex;flex-wrap:wrap;gap:8px;align-self:flex-start;max-width:100%;animation:msgin .35s ease}
+.slot{font-family:var(--body);font-size:.86rem;font-weight:500;border:1px solid var(--border);background:rgba(225,29,42,.05);color:var(--p2);border-radius:100px;padding:9px 15px;cursor:pointer;transition:background .2s,transform .18s}
+.slot:hover:not(:disabled){background:rgba(225,29,42,.18);transform:translateY(-2px)}
+.slot.sel{background:var(--p);color:#fff;border-color:var(--p)}
+.slots.locked .slot:not(.sel){opacity:.4;cursor:default}
 .chat-input{display:flex;gap:10px;padding:14px 16px;border-top:1px solid var(--line);background:var(--card)}
 .chat-input input{flex:1;background:var(--bg);border:1px solid var(--line);border-radius:9px;color:var(--text);padding:12px 14px;font-family:var(--body);font-size:.92rem;outline:none;transition:border-color .25s}
 .chat-input input:focus{border-color:var(--border)}
@@ -682,8 +703,7 @@ window.addEventListener('DOMContentLoaded', function(){
   gsap.utils.toArray('.bignum').forEach(n => gsap.to(n, {yPercent:-14, ease:'none', scrollTrigger:{trigger:n.closest('section'), start:'top bottom', end:'bottom top', scrub:true}}));
   gsap.utils.toArray('.framed img').forEach(img => gsap.to(img, {yPercent:-6, ease:'none', scrollTrigger:{trigger:img.closest('section'), start:'top bottom', end:'bottom top', scrub:true}}));
 });
-/* ===== CHATBOT ÁNGEL — 100% cliente, lead por WhatsApp + Supabase ===== */
-const WHATSAPP = '34643199580';
+/* ===== CHATBOT ÁNGEL — 100% cliente, lead + agenda (Supabase + CallMeBot) ===== */
 const SUPABASE_URL = 'https://mlaqtniujnvfxcvcourm.supabase.co';
 const SUPABASE_ANON = 'sb_publishable_6no6BuOgiA_2nonTJntAuQ_DTqEgrcV';
 const NOTIFY_FN = SUPABASE_URL + '/functions/v1/gtautomocion-notify';
@@ -693,7 +713,11 @@ const chatBody = document.getElementById('chatBody');
 const chatInput = document.getElementById('chatInput');
 const chatSend = document.getElementById('chatSend');
 const quicks = document.getElementById('quicks');
-let greeted=false, estado='inicio', leadNombre='', leadTelefono='', leadServicio='';
+let greeted=false, estado='inicio', leadNombre='', leadTelefono='', leadServicio='', leadDiaISO='', leadDiaLegible='', leadHora='';
+let calY, calM;
+const MESES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+const DIAS=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+const SLOTS=['09:30','11:00','12:30','16:00','17:30'];
 function toggleChat(){
   const open = chat.classList.toggle('open');
   fab.style.display = open ? 'none' : 'flex';
@@ -702,43 +726,92 @@ function toggleChat(){
 }
 function openChat(servicio){
   if (!chat.classList.contains('open')) toggleChat();
-  if (servicio){ leadServicio=servicio; if(!greeted){greeted=true;} setTimeout(()=>{ addMsg(servicio,'me'); showTyping(); setTimeout(()=>{hideTyping(); estado='esperando_nombre'; botSay('Perfecto, '+servicio+'. Para reservar tu cita, ¿a nombre de quién la pongo?'); if(quicks)quicks.style.display='none';},500); },320); }
+  if (servicio){ leadServicio=servicio; if(!greeted){greeted=true;} setTimeout(()=>{ addMsg(servicio,'me'); showTyping(); setTimeout(()=>{hideTyping(); estado='esperando_dia'; if(quicks)quicks.style.display='none'; botSay('Perfecto, '+servicio+'. ¿Qué día te viene bien? Elígelo en el calendario:'); showCalendar();},500); },320); }
 }
 function addMsg(text,who){const el=document.createElement('div');el.className='msg '+who;el.textContent=text;chatBody.appendChild(el);chatBody.scrollTop=chatBody.scrollHeight}
 function botSay(text){addMsg(text,'bot')}
 function showTyping(){const t=document.createElement('div');t.className='typing';t.id='typing';t.innerHTML='<span></span><span></span><span></span>';chatBody.appendChild(t);chatBody.scrollTop=chatBody.scrollHeight}
 function hideTyping(){const t=document.getElementById('typing');if(t)t.remove()}
-function enviarWhatsApp(nombre,telefono,servicio){
-  const base = servicio ? `Hola, soy ${nombre} (tel: ${telefono}). Quiero reservar: ${servicio} en GT Automoción.` : `Hola, soy ${nombre} (tel: ${telefono}). Quiero reservar cita en GT Automoción.`;
-  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(base)}`,'_blank');
+/* ===== Agenda: calendario (día) + franjas (hora) ===== */
+function showCalendar(){ const n=new Date(); calY=n.getFullYear(); calM=n.getMonth(); renderCalendar(); }
+function renderCalendar(){
+  let w=document.getElementById('calWidget');
+  if(!w){ w=document.createElement('div'); w.id='calWidget'; chatBody.appendChild(w); }
+  w.className='cal'; w.innerHTML='';
+  const n=new Date(); const today=new Date(n.getFullYear(),n.getMonth(),n.getDate());
+  const atCur=(calY===n.getFullYear()&&calM===n.getMonth());
+  const head=document.createElement('div'); head.className='cal-head';
+  const prev=document.createElement('button'); prev.type='button'; prev.className='cal-nav'; prev.textContent='‹'; prev.setAttribute('aria-label','Mes anterior'); prev.disabled=atCur;
+  prev.onclick=()=>{ if(prev.disabled)return; calM--; if(calM<0){calM=11;calY--;} renderCalendar(); };
+  const title=document.createElement('span'); title.className='cal-title'; title.textContent=MESES[calM]+' '+calY;
+  const next=document.createElement('button'); next.type='button'; next.className='cal-nav'; next.textContent='›'; next.setAttribute('aria-label','Mes siguiente');
+  next.onclick=()=>{ calM++; if(calM>11){calM=0;calY++;} renderCalendar(); };
+  head.append(prev,title,next); w.appendChild(head);
+  const dow=document.createElement('div'); dow.className='cal-grid cal-dow';
+  ['L','M','X','J','V','S','D'].forEach(x=>{ const s=document.createElement('span'); s.textContent=x; dow.appendChild(s); });
+  w.appendChild(dow);
+  const grid=document.createElement('div'); grid.className='cal-grid';
+  const start=(new Date(calY,calM,1).getDay()+6)%7;
+  for(let i=0;i<start;i++){ const e=document.createElement('span'); e.className='cal-day empty'; grid.appendChild(e); }
+  const dim=new Date(calY,calM+1,0).getDate();
+  for(let d=1;d<=dim;d++){
+    const cell=document.createElement('button'); cell.type='button'; cell.className='cal-day'; cell.textContent=d;
+    const dt=new Date(calY,calM,d);
+    if(dt<today || dt.getDay()===0){ cell.disabled=true; cell.classList.add('disabled'); }
+    else { cell.onclick=()=>pickDay(calY,calM,d,cell); }
+    grid.appendChild(cell);
+  }
+  w.appendChild(grid); chatBody.scrollTop=chatBody.scrollHeight;
 }
-/* Guarda el lead en Supabase (leads_web) y notifica por WhatsApp (edge function).
-   Se ejecuta SIEMPRE al capturar nombre+teléfono, aunque el usuario no pulse WhatsApp. */
-function saveLead(nombre,telefono,servicio){
+function pickDay(y,m,d,cell){
+  leadDiaISO=y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+  leadDiaLegible=DIAS[new Date(y,m,d).getDay()]+' '+d+' de '+MESES[m];
+  const w=document.getElementById('calWidget');
+  if(w){ w.classList.add('locked'); w.querySelectorAll('.cal-day,.cal-nav').forEach(b=>b.disabled=true); cell.classList.add('sel'); }
+  estado='esperando_hora'; showTyping();
+  setTimeout(()=>{ hideTyping(); botSay('Genial, el '+leadDiaLegible+'. ¿A qué hora te viene mejor?'); showSlots(); },450);
+}
+function showSlots(){
+  const w=document.createElement('div'); w.className='slots'; w.id='slotWidget';
+  SLOTS.forEach(h=>{ const b=document.createElement('button'); b.type='button'; b.className='slot'; b.textContent=h; b.onclick=()=>pickHora(h,b); w.appendChild(b); });
+  chatBody.appendChild(w); chatBody.scrollTop=chatBody.scrollHeight;
+}
+function pickHora(h,btn){
+  leadHora=h;
+  const w=document.getElementById('slotWidget');
+  if(w){ w.classList.add('locked'); w.querySelectorAll('.slot').forEach(b=>b.disabled=true); btn.classList.add('sel'); }
+  estado='esperando_nombre'; showTyping();
+  setTimeout(()=>{ hideTyping(); botSay('Perfecto. ¿A nombre de quién pongo la cita?'); },450);
+}
+/* Guarda el lead con cita en Supabase (leads_web) y notifica al taller por WhatsApp
+   (edge function gtautomocion-notify -> CallMeBot). Sin abrir WhatsApp en el cliente. */
+function saveLead(nombre,telefono,servicio,citaDia,citaHora){
   fetch(SUPABASE_URL+'/rest/v1/leads_web',{
     method:'POST',
     headers:{'Content-Type':'application/json','apikey':SUPABASE_ANON,'Authorization':'Bearer '+SUPABASE_ANON,'Prefer':'return=minimal'},
-    body:JSON.stringify({nombre,telefono,sector:'automocion',interes:servicio,mensaje:'Servicio: '+servicio,origen:'demo-gtautomocion'})
+    body:JSON.stringify({nombre,telefono,sector:'automocion',interes:servicio,mensaje:'Servicio: '+servicio,origen:'demo-gtautomocion',cita_dia:citaDia,cita_hora:citaHora})
   }).catch(()=>{});
 }
-function notifyLead(nombre,telefono,servicio){
+function notifyLead(nombre,telefono,servicio,citaDia,citaHora){
   fetch(NOTIFY_FN,{
     method:'POST',
     headers:{'Content-Type':'application/json','apikey':SUPABASE_ANON,'Authorization':'Bearer '+SUPABASE_ANON},
-    body:JSON.stringify({nombre,telefono,servicio})
+    body:JSON.stringify({nombre,telefono,servicio,cita_dia:citaDia,cita_hora:citaHora})
   }).catch(()=>{});
 }
 function procesarMensaje(texto){
   const t=texto.toLowerCase().trim();
   if (estado==='esperando_nombre'){ leadNombre=texto.trim(); estado='esperando_telefono'; return `Gracias, ${leadNombre}. ¿Un teléfono de contacto para confirmarte la cita?`; }
-  if (estado==='esperando_telefono'){ leadTelefono=texto.trim(); estado='inicio'; const servicioLead=leadServicio||'Consulta general'; saveLead(leadNombre,leadTelefono,servicioLead); notifyLead(leadNombre,leadTelefono,servicioLead); enviarWhatsApp(leadNombre,leadTelefono,leadServicio); const s=leadServicio; leadServicio=''; return `Perfecto, ${leadNombre}. Te abro WhatsApp para terminar de reservar${s?' tu '+s.toLowerCase():''}. Un compañero de GT Automoción te confirmará la cita. Si no se abre, escríbenos al +34 643 199 580.`; }
-  if (t.includes('mantenim') || t.includes('aceite') || t.includes('revision') || t.includes('revisión')){ leadServicio='Mantenimiento'; estado='esperando_nombre'; return 'El mantenimiento (motor y caja de cambios) parte desde 200€: aceite, filtros, frenos, líquidos, neumáticos y más. Para reservar, ¿a nombre de quién?'; }
-  if (t.includes('mercedes') || t.includes('diagnos')){ leadServicio='Diagnosis Mercedes'; estado='esperando_nombre'; return 'Hacemos diagnosis y actualización específica de Mercedes (287,50€) con equipo especializado. ¿A nombre de quién pongo la cita?'; }
-  if (t.includes('comprob') || t.includes('comprar') || t.includes('segunda mano') || t.includes('pre-compra') || t.includes('precompra')){ leadServicio='Comprobación pre-compra'; estado='esperando_nombre'; return 'La comprobación pre-compra (250,47€) revisa el coche antes de que lo compres: nota informativa, fotos y asesoramiento. ¿A nombre de quién la reservo?'; }
-  if (t.includes('perit') || t.includes('informe')){ leadServicio='Peritaje / informe pericial'; estado='esperando_nombre'; return 'Realizamos peritajes y estudio de viabilidad para informes periciales (120€), presencial u online. ¿A nombre de quién?'; }
-  if (t.includes('mecánic') || t.includes('mecanic') || t.includes('electro') || t.includes('avería') || t.includes('averia') || t.includes('ruido') || t.includes('fallo')){ leadServicio='Mecánica y electromecánica'; estado='esperando_nombre'; return 'Diagnosticamos y reparamos averías mecánicas y eléctricas (diagnóstico 50€). Para reservar, ¿a nombre de quién?'; }
-  if (t.includes('teléfon') || t.includes('telefon') || t.includes('distancia') || t.includes('asesor')){ leadServicio='Asesoramiento telefónico'; estado='esperando_nombre'; return 'El asesoramiento telefónico (103,53€) te orienta a distancia: nos envías tu caso y documentación. ¿A nombre de quién?'; }
-  if (t.includes('cita') || t.includes('reserv') || t.includes('presupuest') || t.includes('precio') || t.includes('whatsapp') || t.includes('contact')){ estado='esperando_nombre'; return 'Con gusto reservo tu cita. ¿A nombre de quién la pongo?'; }
+  if (estado==='esperando_telefono'){ leadTelefono=texto.trim(); estado='inicio'; const servicioLead=leadServicio||'Consulta general'; saveLead(leadNombre,leadTelefono,servicioLead,leadDiaISO,leadHora); notifyLead(leadNombre,leadTelefono,servicioLead,leadDiaLegible,leadHora); const cierre=`Gracias, ${leadNombre}. Hemos anotado tu ${servicioLead.toLowerCase()} para el ${leadDiaLegible} a las ${leadHora}. Un compañero de GT Automoción te llamará al ${leadTelefono} para confirmar la cita.`; leadServicio=''; leadDiaISO=''; leadDiaLegible=''; leadHora=''; return cierre; }
+  if (estado==='esperando_dia'){ return 'Elige el día que prefieras en el calendario para continuar.'; }
+  if (estado==='esperando_hora'){ return 'Elige una de las horas disponibles para continuar.'; }
+  if (t.includes('mantenim') || t.includes('aceite') || t.includes('revision') || t.includes('revisión')){ leadServicio='Mantenimiento'; estado='esperando_dia'; return 'El mantenimiento (motor y caja de cambios) parte desde 200€: aceite, filtros, frenos, líquidos, neumáticos y más. ¿Qué día te viene bien? Elígelo en el calendario:'; }
+  if (t.includes('mercedes') || t.includes('diagnos')){ leadServicio='Diagnosis Mercedes'; estado='esperando_dia'; return 'Hacemos diagnosis y actualización específica de Mercedes (287,50€) con equipo especializado. ¿Qué día te viene bien? Elígelo en el calendario:'; }
+  if (t.includes('comprob') || t.includes('comprar') || t.includes('segunda mano') || t.includes('pre-compra') || t.includes('precompra')){ leadServicio='Comprobación pre-compra'; estado='esperando_dia'; return 'La comprobación pre-compra (250,47€) revisa el coche antes de que lo compres: nota informativa, fotos y asesoramiento. ¿Qué día te viene bien? Elígelo en el calendario:'; }
+  if (t.includes('perit') || t.includes('informe')){ leadServicio='Peritaje / informe pericial'; estado='esperando_dia'; return 'Realizamos peritajes y estudio de viabilidad para informes periciales (120€), presencial u online. ¿Qué día te viene bien? Elígelo en el calendario:'; }
+  if (t.includes('mecánic') || t.includes('mecanic') || t.includes('electro') || t.includes('avería') || t.includes('averia') || t.includes('ruido') || t.includes('fallo')){ leadServicio='Mecánica y electromecánica'; estado='esperando_dia'; return 'Diagnosticamos y reparamos averías mecánicas y eléctricas (diagnóstico 50€). ¿Qué día te viene bien? Elígelo en el calendario:'; }
+  if (t.includes('teléfon') || t.includes('telefon') || t.includes('distancia') || t.includes('asesor')){ leadServicio='Asesoramiento telefónico'; estado='esperando_dia'; return 'El asesoramiento telefónico (103,53€) te orienta a distancia: nos envías tu caso y documentación. ¿Qué día te viene bien? Elígelo en el calendario:'; }
+  if (t.includes('cita') || t.includes('reserv') || t.includes('presupuest') || t.includes('precio') || t.includes('agenda') || t.includes('contact')){ estado='esperando_dia'; return 'Con gusto reservo tu cita. ¿Qué día te viene bien? Elígelo en el calendario:'; }
   if (t.includes('hola') || t.includes('buenas') || t.includes('buenos')){ return 'Hola, soy Ángel, el asistente de GT Automoción. ¿Con qué servicio te ayudo: mantenimiento, diagnosis Mercedes, comprobación pre-compra, mecánica o peritaje?'; }
   return 'Puedo ayudarte con mantenimiento, diagnosis Mercedes, comprobación pre-compra, mecánica y electromecánica, peritajes o asesoramiento telefónico. Escribe "cita" y reservamos tu visita al taller.';
 }
@@ -747,7 +820,7 @@ function send(text){
   if(quicks)quicks.style.display='none';
   addMsg(text,'me'); chatInput.value=''; chatSend.disabled=true; showTyping();
   const reply=procesarMensaje(text);
-  setTimeout(()=>{hideTyping();botSay(reply);chatSend.disabled=false;chatInput.focus()},520);
+  setTimeout(()=>{hideTyping();if(reply)botSay(reply);chatSend.disabled=false;if(estado==='esperando_dia'&&!document.getElementById('calWidget'))showCalendar();chatInput.focus()},520);
 }
 function quickSend(text){send(text)}
 document.getElementById('chatForm').addEventListener('submit',e=>{e.preventDefault();send(chatInput.value)});
