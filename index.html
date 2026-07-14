@@ -95,6 +95,9 @@ header.nav.scrolled::after{border-bottom-color:var(--line)}
 .btn.ghost{background:transparent;color:var(--p2)}
 .btn.ghost:hover{background:rgba(225,29,42,.08)}
 .nav-cta{display:flex;align-items:center;gap:18px}
+.nav-shop{display:inline-flex;align-items:center;justify-content:center;color:var(--muted);transition:color .25s,transform .2s}
+.nav-shop:hover{color:var(--p2);transform:translateY(-1px)}
+.nav-shop svg{width:22px;height:22px;display:block}
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
 .burger span{width:26px;height:2px;background:var(--text);transition:.3s}
 .mobile-menu{position:fixed;inset:0;background:rgba(8,8,11,.97);backdrop-filter:blur(10px);z-index:899;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:24px;opacity:0;pointer-events:none;transition:opacity .35s}
@@ -273,7 +276,7 @@ footer.foot{border-top:1px solid var(--line);padding:34px 0;margin-top:110px}
 /* RESPONSIVE */
 @media(max-width:1080px){
   .nav-links{display:none}
-  .nav-cta .btn:not(.burger){display:none}
+  .nav-cta .btn:not(.burger),.nav-shop{display:none}
   .burger{display:flex}
 }
 @media(max-width:900px){
@@ -329,6 +332,7 @@ footer.foot{border-top:1px solid var(--line);padding:34px 0;margin-top:110px}
       <a href="#faq">Preguntas</a>
     </nav>
     <div class="nav-cta">
+      <a href="https://gtautomocion.shop/" target="_blank" rel="noopener" class="nav-shop" aria-label="Tienda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></a>
       <a class="btn" onclick="openChat()">Reservar cita</a>
       <div class="burger" id="burger" aria-label="Menú"><span></span><span></span><span></span></div>
     </div>
@@ -343,6 +347,7 @@ footer.foot{border-top:1px solid var(--line);padding:34px 0;margin-top:110px}
   <a href="#comprobacion">Comprobación</a>
   <a href="#faq">Preguntas</a>
   <a href="#contacto">Contacto</a>
+  <a href="https://gtautomocion.shop/" target="_blank" rel="noopener">Tienda</a>
 </div>
 <!-- HERO -->
 <section class="hero" id="top">
