@@ -81,6 +81,7 @@ header.nav.scrolled{background:rgba(8,8,11,.82);backdrop-filter:blur(14px)}
 header.nav.scrolled::after{border-bottom-color:var(--line)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:84px}
 .nav-logo{display:flex;align-items:center;gap:13px}
+.nav-logo .logo-img{height:40px;width:auto;display:block}
 .nav-logo .mark{width:44px;height:44px;border-radius:9px;background:linear-gradient(135deg,var(--p),#8f0d16);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:1.35rem;color:#fff;box-shadow:0 8px 22px -8px rgba(225,29,42,.7)}
 .nav-logo .sep{width:1px;height:26px;background:var(--line)}
 .nav-logo small{font-family:var(--display);font-weight:600;letter-spacing:.18em;font-size:.62rem;color:var(--muted);text-transform:uppercase;line-height:1.3}
@@ -218,15 +219,18 @@ footer.foot{border-top:1px solid var(--line);padding:34px 0;margin-top:110px}
 .reveal{opacity:0;transform:translateY(38px)}
 .reveal.is-in{opacity:1;transform:none;transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 /* CHATBOT */
-.fab{position:fixed;right:26px;bottom:26px;z-index:950;width:64px;height:64px;border-radius:50%;background:var(--p);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 16px 40px -10px rgba(225,29,42,.65);transition:transform .3s}
-.fab:hover{transform:scale(1.08) rotate(12deg)}
-.fab svg{width:32px;height:32px;color:#fff}
-.fab .ping{position:absolute;inset:0;border-radius:50%;border:2px solid var(--p);animation:fabping 2.6s ease-out infinite}
-@keyframes fabping{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.5);opacity:0}}
+.fab{position:fixed;right:26px;bottom:26px;z-index:950;width:64px;height:64px;border-radius:50%;background:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 16px 40px -10px rgba(225,29,42,.65);transition:transform .3s}
+.fab:hover{transform:scale(1.08)}
+.fab-logo{position:relative;z-index:1;width:34px;height:auto;display:block}
+.fab .ripple{position:absolute;inset:0;border-radius:50%;border:2px solid var(--p);opacity:0;pointer-events:none;animation:fabripple 2.8s ease-out infinite}
+.fab .ripple:nth-child(2){animation-delay:.93s}
+.fab .ripple:nth-child(3){animation-delay:1.86s}
+@keyframes fabripple{0%{transform:scale(1);opacity:.5}70%{opacity:.1}100%{transform:scale(2.1);opacity:0}}
 .chat{position:fixed;right:26px;bottom:26px;z-index:960;width:392px;max-width:calc(100vw - 32px);height:600px;max-height:calc(100vh - 40px);background:var(--bg2);border:1px solid var(--border);border-radius:16px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.9);transform:translateY(30px) scale(.96);opacity:0;pointer-events:none;transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .35s}
 .chat.open{transform:none;opacity:1;pointer-events:auto}
 .chat-head{display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--card);border-bottom:1px solid var(--line)}
-.chat-ava{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--p),#8f0d16);display:grid;place-items:center;flex-shrink:0;font-family:var(--display);font-weight:800;color:#fff;font-size:1.3rem}
+.chat-ava{width:46px;height:46px;border-radius:50%;background:#fff;display:grid;place-items:center;flex-shrink:0;overflow:hidden}
+.chat-ava img{width:34px;height:auto;display:block}
 .chat-head .hi b{font-family:var(--display);font-weight:800;font-size:1.18rem;text-transform:uppercase;letter-spacing:.04em;display:block;line-height:1}
 .chat-head .hi small{color:var(--muted);font-size:.74rem;display:flex;align-items:center;gap:6px;margin-top:4px}
 .chat-head .hi small i{width:7px;height:7px;border-radius:50%;background:var(--g);display:inline-block}
@@ -281,6 +285,7 @@ footer.foot{border-top:1px solid var(--line);padding:34px 0;margin-top:110px}
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
   .reveal{opacity:1!important;transform:none!important}
+  .fab .ripple{display:none!important}
 }
 </style>
 </head>
@@ -289,9 +294,12 @@ footer.foot{border-top:1px solid var(--line);padding:34px 0;margin-top:110px}
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
     <a href="#top" class="nav-logo" aria-label="GT Automoción inicio">
-      <span class="mark">GT</span>
+      <picture>
+        <source srcset="logo-gt.avif" type="image/avif">
+        <img src="logo-gt.avif" alt="GT Automoción" class="logo-img" width="70" height="40">
+      </picture>
       <span class="sep"></span>
-      <small>Taller<br>Ángel Gaitán</small>
+      <small>Ángel Gaitán</small>
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="#top" class="active">Inicio</a>
@@ -542,12 +550,14 @@ footer.foot{border-top:1px solid var(--line);padding:34px 0;margin-top:110px}
 </section>
 <!-- CHATBOT DIEGO -->
 <button class="fab" id="fab" aria-label="Abrir asistente Diego" onclick="toggleChat()">
-  <span class="ping"></span>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+  <span class="ripple" aria-hidden="true"></span>
+  <span class="ripple" aria-hidden="true"></span>
+  <span class="ripple" aria-hidden="true"></span>
+  <img src="logo-gt.avif" alt="GT Automoción" class="fab-logo">
 </button>
 <div class="chat" id="chat" aria-live="polite">
   <div class="chat-head">
-    <div class="chat-ava">D</div>
+    <div class="chat-ava"><img src="logo-gt.avif" alt="GT Automoción"></div>
     <div class="hi"><b>Diego</b><small><i></i>Asistente · GT Automoción</small></div>
     <button class="chat-x" aria-label="Cerrar" onclick="toggleChat()">×</button>
   </div>
