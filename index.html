@@ -717,7 +717,7 @@ let greeted=false, estado='inicio', leadNombre='', leadTelefono='', leadServicio
 let calY, calM;
 const MESES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 const DIAS=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
-const SLOTS=['09:30','11:00','12:30','16:00','17:30'];
+const SLOTS=['08:00','09:30','11:00','12:30','14:00','15:30']; /* Horario taller: L-V 08:00-16:00 */
 function toggleChat(){
   const open = chat.classList.toggle('open');
   fab.style.display = open ? 'none' : 'flex';
@@ -757,7 +757,7 @@ function renderCalendar(){
   for(let d=1;d<=dim;d++){
     const cell=document.createElement('button'); cell.type='button'; cell.className='cal-day'; cell.textContent=d;
     const dt=new Date(calY,calM,d);
-    if(dt<today || dt.getDay()===0){ cell.disabled=true; cell.classList.add('disabled'); }
+    if(dt<today || dt.getDay()===0 || dt.getDay()===6){ cell.disabled=true; cell.classList.add('disabled'); } /* cerrado sábado (6) y domingo (0) */
     else { cell.onclick=()=>pickDay(calY,calM,d,cell); }
     grid.appendChild(cell);
   }
