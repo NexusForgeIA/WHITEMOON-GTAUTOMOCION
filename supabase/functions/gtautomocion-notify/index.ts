@@ -11,7 +11,8 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 //
 // verify_jwt: false (se llama desde el navegador sin sesion; no expone secretos).
 //
-// Recibe (POST JSON): { nombre, telefono, servicio, origen, mensaje }  (retrocompatible)
+// Recibe (POST JSON): { nombre, telefono, servicio, cita_dia, cita_hora, origen, mensaje }
+// (retrocompatible: si faltan cita_dia/cita_hora, la línea "Cita:" no aparece)
 
 const DEFAULT_WA = "34643199580";
 
@@ -45,12 +46,18 @@ Deno.serve(async (req: Request) => {
   const telefono = String(data.telefono ?? "").trim() || "-";
   const servicio = String(data.servicio ?? "").trim() || "-";
   const origen = String(data.origen ?? "demo-gtautomocion").trim() || "-";
+  const citaDia = String(data.cita_dia ?? "").trim();
+  const citaHora = String(data.cita_hora ?? "").trim();
   const extra = String(data.mensaje ?? "").trim();
+
+  const cita = (citaDia || citaHora)
+    ? `\nCita: ${citaDia || "-"}${citaHora ? " a las " + citaHora : ""}`
+    : "";
 
   const message =
     `Nuevo lead GT Automoción (demo)\n` +
     `Nombre: ${nombre} | Tel: ${telefono}\n` +
-    `Servicio: ${servicio}\n` +
+    `Servicio: ${servicio}` + cita + `\n` +
     `Origen: ${origen}` +
     (extra ? `\n${extra}` : "");
 
