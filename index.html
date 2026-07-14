@@ -191,6 +191,19 @@ section[id]{scroll-margin-top:80px}
 .check-row .ic svg{width:22px;height:22px}
 .check-row b{font-family:var(--display);font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:.02em;display:block}
 .check-row span{color:var(--muted);font-size:.86rem}
+/* NOSOTROS */
+.nos-title{font-size:clamp(1.7rem,3.5vw,2.9rem)}
+.nos-intro{color:var(--muted);margin-top:20px;font-size:1.05rem;max-width:720px}
+.nos-sub{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(1.35rem,2.8vw,1.85rem);margin:66px 0 4px;display:flex;align-items:center;gap:.55em}
+.nos-sub::before{content:"";width:26px;height:2px;background:var(--p);display:inline-block;flex-shrink:0}
+.nos-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:26px}
+.nos-metodo{display:flex;gap:26px;align-items:flex-start;margin-top:44px;padding:34px 32px;border:1px solid var(--border);border-radius:14px;background:linear-gradient(180deg,rgba(225,29,42,.05),transparent)}
+.nos-metodo .m-ic{width:54px;height:54px;flex-shrink:0;border-radius:12px;background:rgba(225,29,42,.1);border:1px solid var(--border);display:grid;place-items:center;color:var(--p2)}
+.nos-metodo .m-ic svg{width:27px;height:27px}
+.nos-metodo .m-body .eyebrow{margin-bottom:14px}
+.nos-metodo .m-body p{color:#aeb2bf;font-size:1.05rem}
+.nos-metodo .m-body p strong{color:var(--text);font-weight:600}
+.nos-compromiso{margin-top:26px}
 /* FAQ */
 .faq{max-width:840px;margin:0 auto}
 .faq-item{border:1px solid var(--line);border-radius:12px;margin-bottom:12px;background:var(--card);overflow:hidden}
@@ -258,16 +271,19 @@ footer.foot{border-top:1px solid var(--line);padding:34px 0;margin-top:110px}
 .chat-input button:disabled{opacity:.45;cursor:default}
 .chat-input button svg{width:20px;height:20px;color:#fff}
 /* RESPONSIVE */
-@media(max-width:900px){
-  .wrap{padding:0 22px}
+@media(max-width:1080px){
   .nav-links{display:none}
   .nav-cta .btn:not(.burger){display:none}
   .burger{display:flex}
+}
+@media(max-width:900px){
+  .wrap{padding:0 22px}
   .sec{padding:88px 0}
   .about-grid,.check-grid,.contact-grid{grid-template-columns:1fr;gap:46px}
   .about-media{order:-1}
   .svc-grid{grid-template-columns:1fr 1fr}
   .why-grid{grid-template-columns:1fr 1fr}
+  .nos-grid{grid-template-columns:1fr 1fr}
   .hero-stats{grid-template-columns:1fr 1fr}
   .contact-info{grid-template-columns:1fr 1fr}
   .hero-content{padding-top:110px}
@@ -276,7 +292,8 @@ footer.foot{border-top:1px solid var(--line);padding:34px 0;margin-top:110px}
 }
 @media(max-width:600px){
   .wrap{padding:0 18px}
-  .svc-grid,.why-grid,.contact-info{grid-template-columns:1fr}
+  .svc-grid,.why-grid,.contact-info,.nos-grid{grid-template-columns:1fr}
+  .nos-metodo{flex-direction:column;gap:18px;padding:26px 22px}
   .hero-stats{grid-template-columns:1fr 1fr}
   .hero-content{padding-top:90px}
   .tag-badge{left:50%;transform:translateX(-50%);bottom:-20px}
@@ -305,6 +322,7 @@ footer.foot{border-top:1px solid var(--line);padding:34px 0;margin-top:110px}
     <nav class="nav-links" id="navLinks">
       <a href="#top" class="active">Inicio</a>
       <a href="#taller">El taller</a>
+      <a href="#nosotros">Nosotros</a>
       <a href="#servicios">Servicios</a>
       <a href="#porque">Por qué GT</a>
       <a href="#comprobacion">Comprobación</a>
@@ -319,6 +337,7 @@ footer.foot{border-top:1px solid var(--line);padding:34px 0;margin-top:110px}
 <div class="mobile-menu" id="mobileMenu">
   <a href="#top">Inicio</a>
   <a href="#taller">El taller</a>
+  <a href="#nosotros">Nosotros</a>
   <a href="#servicios">Servicios</a>
   <a href="#porque">Por qué GT</a>
   <a href="#comprobacion">Comprobación</a>
@@ -381,9 +400,47 @@ footer.foot{border-top:1px solid var(--line);padding:34px 0;margin-top:110px}
     </div>
   </div>
 </section>
+<!-- NOSOTROS -->
+<section class="sec" id="nosotros" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <span class="bignum" style="right:-2vw;top:20px">02</span>
+  <div class="wrap">
+    <div class="sec-head reveal" style="max-width:900px">
+      <span class="eyebrow">Quiénes somos</span>
+      <h2 class="nos-title">GT Automoción no es un taller multimarca convencional. Lo notarás en cuanto entres.</h2>
+      <p class="nos-intro">La intervención sobre el vehículo es solo una parte del camino. Todo comienza con una recepción activa, donde analizamos contigo el motivo de tu visita. El proceso termina con una entrega precisa y cuidada, sujeta a un control de calidad que impide que regreses por el mismo motivo que te trajo.</p>
+    </div>
+
+    <h3 class="nos-sub reveal">¿Qué podemos hacer por tu vehículo?</h3>
+    <div class="nos-grid">
+      <div class="why-c reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><h4>Mantenimiento preventivo</h4><p>Actuamos antes de que aparezcan fallos. Revisamos frenos, suspensión, filtros y neumáticos para un funcionamiento óptimo.</p></div>
+      <div class="why-c reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h4>Diagnóstico y reparación</h4><p>Tecnología de diagnosis avanzada y experiencia técnica para resolver averías de forma eficiente.</p></div>
+      <div class="why-c reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h4>Mecánica rápida</h4><p>Cambios de aceite, discos o amortiguadores sin demoras innecesarias.</p></div>
+      <div class="why-c reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></div><h4>Electromecánica</h4><p>Revisión, reparación y puesta a punto de sistemas electrónicos y eléctricos.</p></div>
+      <div class="why-c reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg></div><h4>Informes periciales</h4><p><strong>Ángel Gaitán</strong> —perito judicial— elabora informes detallados y objetivos sobre el estado del vehículo para reclamaciones o procesos legales.</p></div>
+      <div class="why-c reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div><h4>Comprobaciones técnicas GT</h4><p>Exámenes detallados con documentación fotográfica y opción de asesoramiento, para quienes compran, venden o dudan del estado real del vehículo.</p></div>
+      <div class="why-c reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg></div><h4>Diagnosis oficial Mercedes</h4><p>Herramienta específica para diagnóstico y actualización de software en Mercedes-Benz.</p></div>
+      <div class="why-c reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7 6.3 8.4a8 8 0 1 0 11.4 0z"/><path d="M9.5 14a2.5 2.5 0 0 0 2.5 2.5"/></svg></div><h4>Limpieza técnica de vehículos</h4><p>Limpieza adaptada al mantenimiento del interior y exterior.</p></div>
+    </div>
+
+    <div class="nos-metodo reveal">
+      <div class="m-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div>
+      <div class="m-body">
+        <span class="eyebrow">Metodología</span>
+        <p>En GT Automoción cada intervención sigue un criterio técnico. Evitamos sustituciones innecesarias y aplicamos soluciones basadas en diagnóstico riguroso, experiencia real y un compromiso constante con la calidad. El taller está liderado por <strong>Ángel Gaitán</strong>, profesional con amplia trayectoria en mecánica, electromecánica y peritaje judicial.</p>
+      </div>
+    </div>
+
+    <h3 class="nos-sub reveal">Compromiso</h3>
+    <div class="check-list nos-compromiso reveal">
+      <div class="check-row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div><b>Recepción activa</b><span>Atendemos cada caso desde su contexto real, no solo desde la avería.</span></div></div>
+      <div class="check-row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></div><div><b>Control de entrega</b><span>Cada vehículo se entrega tras verificación interna de calidad.</span></div></div>
+      <div class="check-row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div><div><b>Transparencia</b><span>Informes, fotos y comunicación clara durante todo el proceso.</span></div></div>
+    </div>
+  </div>
+</section>
 <!-- SERVICIOS -->
 <section class="sec" id="servicios" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-  <span class="bignum" style="right:-2vw;top:20px">02</span>
+  <span class="bignum" style="right:-2vw;top:20px">03</span>
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Servicios</span>
@@ -468,7 +525,7 @@ footer.foot{border-top:1px solid var(--line);padding:34px 0;margin-top:110px}
 </section>
 <!-- POR QUÉ -->
 <section class="sec why" id="porque">
-  <span class="bignum" style="left:-2vw;top:30px">03</span>
+  <span class="bignum" style="left:-2vw;top:30px">04</span>
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Por qué GT</span>
@@ -484,7 +541,7 @@ footer.foot{border-top:1px solid var(--line);padding:34px 0;margin-top:110px}
 </section>
 <!-- COMPROBACIÓN -->
 <section class="sec" id="comprobacion">
-  <span class="bignum" style="right:-2vw;top:20px">04</span>
+  <span class="bignum" style="right:-2vw;top:20px">05</span>
   <div class="wrap">
     <div class="check-grid">
       <div class="check-copy reveal">
@@ -504,7 +561,7 @@ footer.foot{border-top:1px solid var(--line);padding:34px 0;margin-top:110px}
 </section>
 <!-- FAQ -->
 <section class="sec" id="faq" style="background:var(--bg2);border-top:1px solid var(--line)">
-  <span class="bignum" style="left:-2vw;top:20px">05</span>
+  <span class="bignum" style="left:-2vw;top:20px">06</span>
   <div class="wrap">
     <div class="sec-head reveal" style="margin:0 auto 56px;text-align:center">
       <span class="eyebrow" style="justify-content:center">Preguntas frecuentes</span>
