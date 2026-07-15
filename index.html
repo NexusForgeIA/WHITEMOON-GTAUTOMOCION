@@ -724,6 +724,16 @@ let calY, calM;
 const MESES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 const DIAS=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
 const SLOTS=['08:00','09:30','11:00','12:30','14:00','15:30']; /* Horario taller: L-V 08:00-16:00 */
+/* Qué incluye cada servicio (datos reales gtautomocion.com). Las claves deben coincidir
+   con los nombres que usan los chips/openChat y detectarServicio(). */
+const SERVICE_INFO={
+  'Mantenimiento':'El importe de la reserva (200€) se descuenta del total del servicio en taller, no es el precio final. Debes indicar qué trabajos necesitas: aceite y filtros, pastillas o discos de freno, líquido de frenos, limpiaparabrisas, refrigerante, neumáticos, caja de cambios, diferenciales o paralelo. Solo se realizan los trabajos seleccionados y el coche se deja en el taller.',
+  'Mecánica y electromecánica':'Los 50€ son la señal para elaborar el presupuesto: se descuentan si lo aceptas y no se devuelven si lo rechazas. Diagnosticamos y reparamos la avería; el presupuesto es orientativo y el coche se deja en taller (no se entrega el mismo día). Mano de obra: 97,75€+IVA/h hasta 300CV y 120,75€+IVA/h a partir de 300CV.',
+  'Diagnosis Mercedes':'Lectura de errores con diagnosis oficial Mercedes y actualización de software si el fabricante la tiene disponible; al terminar, el equipo de Ángel Gaitán te explica la lectura. Solo para vehículos del grupo Mercedes (Smart y furgonetas incluidos). Duración aproximada de 1 hora; no es una cita de mecánica ni de comprobación.',
+  'Comprobación pre-compra':'Revisamos parámetros clave (kilometraje, golpes, fallos mecánicos y eléctricos) para conocer el estado real antes de comprar o vender. Opción básica con nota informativa y fotos/vídeos (250,47€ de lunes a viernes), o con explicación y asesoramiento (389,62€, con regalo sorpresa). Si el vehículo supera los 300CV se suman 181,50€; los sábados el precio es superior y a puerta cerrada.',
+  'Peritaje / informe pericial':'En colaboración con la Escuela Nacional de Peritos. Los 120€ cubren el asesoramiento online y el estudio del caso con un perito, no el informe. Después, si procede: revisión del vehículo en Aranjuez (157,80€) y elaboración del informe pericial según la cuantía reclamada (desde 850€), válido ante aseguradoras, organismos o tribunales.',
+  'Asesoramiento telefónico':'Consulta telefónica de unos 15 minutos (de lunes a viernes) con los profesionales del taller. Ideal si vas a comprar un coche de segunda mano y dudas entre modelos, quieres saber su estado administrativo o sus averías típicas, o tienes un vehículo con problemas. No incluye seguimiento posterior del caso.'
+};
 function toggleChat(){
   const open = chat.classList.toggle('open');
   fab.style.display = open ? 'none' : 'flex';
@@ -732,7 +742,38 @@ function toggleChat(){
 }
 function openChat(servicio){
   if (!chat.classList.contains('open')) toggleChat();
-  if (servicio){ leadServicio=servicio; if(!greeted){greeted=true;} setTimeout(()=>{ addMsg(servicio,'me'); showTyping(); setTimeout(()=>{hideTyping(); estado='esperando_dia'; if(quicks)quicks.style.display='none'; botSay('Perfecto, '+servicio+'. ¿Qué día te viene bien? Elígelo en el calendario:'); showCalendar();},500); },320); }
+  if (servicio){ if(!greeted){greeted=true;} setTimeout(()=>{ addMsg(servicio,'me'); presentarServicio(servicio); },320); }
+}
+/* Detecta el servicio por intención de palabras -> nombre canónico (o null).
+   Mismo orden de keywords que la detección original. */
+function detectarServicio(t){
+  t=(t||'').toLowerCase();
+  if (t.includes('mantenim')||t.includes('aceite')||t.includes('revision')||t.includes('revisión')) return 'Mantenimiento';
+  if (t.includes('mercedes')||t.includes('diagnos')) return 'Diagnosis Mercedes';
+  if (t.includes('comprob')||t.includes('comprar')||t.includes('segunda mano')||t.includes('pre-compra')||t.includes('precompra')) return 'Comprobación pre-compra';
+  if (t.includes('perit')||t.includes('informe')) return 'Peritaje / informe pericial';
+  if (t.includes('mecánic')||t.includes('mecanic')||t.includes('electro')||t.includes('avería')||t.includes('averia')||t.includes('ruido')||t.includes('fallo')) return 'Mecánica y electromecánica';
+  if (t.includes('teléfon')||t.includes('telefon')||t.includes('distancia')||t.includes('asesor')) return 'Asesoramiento telefónico';
+  return null;
+}
+/* Al elegir servicio: primero informa qué incluye y LUEGO enlaza con la reserva
+   (calendario -> día -> hora -> nombre -> teléfono -> lead), sin romper el flujo. */
+function presentarServicio(servicio){
+  leadServicio=servicio;
+  if(quicks)quicks.style.display='none';
+  showTyping();
+  setTimeout(()=>{
+    hideTyping();
+    const info=SERVICE_INFO[servicio];
+    if(info) botSay(info);
+    showTyping();
+    setTimeout(()=>{
+      hideTyping();
+      estado='esperando_dia';
+      botSay('¿Te reservo cita? Dime, ¿para qué día? Elígelo en el calendario:');
+      showCalendar();
+    },720);
+  },520);
 }
 function addMsg(text,who){const el=document.createElement('div');el.className='msg '+who;el.textContent=text;chatBody.appendChild(el);chatBody.scrollTop=chatBody.scrollHeight}
 function botSay(text){addMsg(text,'bot')}
@@ -811,12 +852,6 @@ function procesarMensaje(texto){
   if (estado==='esperando_telefono'){ leadTelefono=texto.trim(); estado='inicio'; const servicioLead=leadServicio||'Consulta general'; saveLead(leadNombre,leadTelefono,servicioLead,leadDiaISO,leadHora); notifyLead(leadNombre,leadTelefono,servicioLead,leadDiaLegible,leadHora); const cierre=`Gracias, ${leadNombre}. Hemos anotado tu ${servicioLead.toLowerCase()} para el ${leadDiaLegible} a las ${leadHora}. Un compañero de GT Automoción te llamará al ${leadTelefono} para confirmar la cita.`; leadServicio=''; leadDiaISO=''; leadDiaLegible=''; leadHora=''; return cierre; }
   if (estado==='esperando_dia'){ return 'Elige el día que prefieras en el calendario para continuar.'; }
   if (estado==='esperando_hora'){ return 'Elige una de las horas disponibles para continuar.'; }
-  if (t.includes('mantenim') || t.includes('aceite') || t.includes('revision') || t.includes('revisión')){ leadServicio='Mantenimiento'; estado='esperando_dia'; return 'El mantenimiento (motor y caja de cambios) parte desde 200€: aceite, filtros, frenos, líquidos, neumáticos y más. ¿Qué día te viene bien? Elígelo en el calendario:'; }
-  if (t.includes('mercedes') || t.includes('diagnos')){ leadServicio='Diagnosis Mercedes'; estado='esperando_dia'; return 'Hacemos diagnosis y actualización específica de Mercedes (287,50€) con equipo especializado. ¿Qué día te viene bien? Elígelo en el calendario:'; }
-  if (t.includes('comprob') || t.includes('comprar') || t.includes('segunda mano') || t.includes('pre-compra') || t.includes('precompra')){ leadServicio='Comprobación pre-compra'; estado='esperando_dia'; return 'La comprobación pre-compra (250,47€) revisa el coche antes de que lo compres: nota informativa, fotos y asesoramiento. ¿Qué día te viene bien? Elígelo en el calendario:'; }
-  if (t.includes('perit') || t.includes('informe')){ leadServicio='Peritaje / informe pericial'; estado='esperando_dia'; return 'Realizamos peritajes y estudio de viabilidad para informes periciales (120€), presencial u online. ¿Qué día te viene bien? Elígelo en el calendario:'; }
-  if (t.includes('mecánic') || t.includes('mecanic') || t.includes('electro') || t.includes('avería') || t.includes('averia') || t.includes('ruido') || t.includes('fallo')){ leadServicio='Mecánica y electromecánica'; estado='esperando_dia'; return 'Diagnosticamos y reparamos averías mecánicas y eléctricas (diagnóstico 50€). ¿Qué día te viene bien? Elígelo en el calendario:'; }
-  if (t.includes('teléfon') || t.includes('telefon') || t.includes('distancia') || t.includes('asesor')){ leadServicio='Asesoramiento telefónico'; estado='esperando_dia'; return 'El asesoramiento telefónico (103,53€) te orienta a distancia: nos envías tu caso y documentación. ¿Qué día te viene bien? Elígelo en el calendario:'; }
   if (t.includes('cita') || t.includes('reserv') || t.includes('presupuest') || t.includes('precio') || t.includes('agenda') || t.includes('contact')){ estado='esperando_dia'; return 'Con gusto reservo tu cita. ¿Qué día te viene bien? Elígelo en el calendario:'; }
   if (t.includes('hola') || t.includes('buenas') || t.includes('buenos')){ return 'Hola, soy Ángel, el asistente de GT Automoción. ¿Con qué servicio te ayudo: mantenimiento, diagnosis Mercedes, comprobación pre-compra, mecánica o peritaje?'; }
   return 'Puedo ayudarte con mantenimiento, diagnosis Mercedes, comprobación pre-compra, mecánica y electromecánica, peritajes o asesoramiento telefónico. Escribe "cita" y reservamos tu visita al taller.';
@@ -824,7 +859,11 @@ function procesarMensaje(texto){
 function send(text){
   if(!text||!text.trim())return;
   if(quicks)quicks.style.display='none';
-  addMsg(text,'me'); chatInput.value=''; chatSend.disabled=true; showTyping();
+  addMsg(text,'me'); chatInput.value='';
+  /* Si nombra un servicio al inicio: informa qué incluye y luego lleva a la reserva.
+     Solo en 'inicio' para no confundir un nombre (p.ej. "Mercedes") durante la captura. */
+  if(estado==='inicio'){ const svc=detectarServicio(text); if(svc){ chatInput.focus(); presentarServicio(svc); return; } }
+  chatSend.disabled=true; showTyping();
   const reply=procesarMensaje(text);
   setTimeout(()=>{hideTyping();if(reply)botSay(reply);chatSend.disabled=false;if(estado==='esperando_dia'&&!document.getElementById('calWidget'))showCalendar();chatInput.focus()},520);
 }
